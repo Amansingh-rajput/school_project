@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+{% block title %}School List{% endblock %}
+{% block page_level_css %}{% endblock %}
+
+
+{% block container %}
+<a class="btn btn-success btn-lg" href='{% url 'school_add' %}'>Add New School</a>
+<table class="table">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Address</th>
+        <th>Action</th>
+      </tr>
+    </thead>
+    <tbody>
+        {% for each in school_list %}
+        <tr>
+            <td>{{each.name}}</td>
+            <td>{{each.address}}</td>
+            <td>
+                <a type="button" class="btn btn-primary" href="{% url 'school_detail' each.id %}">view</a>
+                <a type="button" class="btn btn-warning" href="{% url 'school_edit' each.id %}">edit</a>
+                <a type="button" class="btn btn-danger" href="{% url 'school_delete' each.id %}">delete</a>
+            </td>
+        </tr>
+        
+        {% endfor %}
+        
+    </tbody>
+  </table>
+
+
+
+{% endblock %}
+
+
+{% block page_level_js %}{% endblock %}
